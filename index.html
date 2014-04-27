@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+    <script src="./js/svg.js"></script>
+    <script src="./js/canvg/rgbcolor.js"></script>
+    <script src="./js/canvg/StackBlur.js"></script>
+    <script src="./js/canvg/canvg.js"></script>
+  </head>
+  <body>
+    <!-- #canvas is to store the generated SVG information -->
+    <canvas id="canvas" style="display:none;"></canvas>
+
+    <div id="container"></div>
+    <button id="save-button">save as PNG in new tab</button>
+
+    <script defer="defer">
+
+      var HEIGHT = 512,
+          WIDTH = 180,
+          COLOR_BACK = 'rgb(59,58,36)',
+          COLOR_FORE = 'rgb(196,192,57)',
+          VERT_SPEED = 0.1,
+          OFFSET = 0.3,
+          MAX_DISP = 20,
+          T = Math.random() * MAX_DISP,
+          QUARTER = Math.floor(WIDTH * 0.25),
+          HALF = Math.floor(WIDTH * 0.5);
+
+      var draw = SVG('container').size(WIDTH, HEIGHT)
+
+      // add background
+      draw.rect(WIDTH, HEIGHT).attr({ fill: COLOR_BACK })
+
+      for (var x = 0; x < HEIGHT; x++) {
+        var max = Math.abs(Math.sin(x * VERT_SPEED) * 20);
+        max += Math.abs(Math.cos(x * VERT_SPEED * OFFSET) * 10);
+        var max_main = Math.floor(max - T);
+
+        // center pattern
+        if (max_main > 0) {
+          draw.line((HALF-max_main), x, (max_main+HALF), x).stroke({ width: 1.5 });
+        }
+
+        // pattern at quarter and three quarter marks
+        var max_2 = Math.abs(max_main-MAX_DISP);
+        if (max_2 > 0) {
+          draw.line((HALF - QUARTER - max_2), x, (max_2 + HALF - QUARTER), x).stroke({ width: 1.5 });
+          draw.line((HALF + QUARTER - max_2), x, (max_2 + HALF + QUARTER), x).stroke({ width: 1.5 });
+        }
+      }
+
+      var save_button = document.getElementById("save-button");
+      save_button.onclick = function() {
+        var svg = document.getElementById("container");
+
+        canvg('canvas', svg.innerHTML);
+        canvas = document.getElementById("canvas");
+        img_url = canvas.toDataURL();
+
+        var win=window.open(img_url, '_blank');
+        win.focus();
+      };
+    </script>
+  </body>
+</html>
