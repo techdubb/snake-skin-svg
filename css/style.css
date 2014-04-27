@@ -1,0 +1,27 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #CCC;
+}
+
+#wrapper {
+  padding: 25px 0 0 0;
+  margin: 0 auto;
+  width: 300px;
+  text-align: center;
+  font-family: Georgia,Serif;;
+  font-size: 16px;
+}
+
+#wrapper h1 {
+  font-size: 24px;
+}
+
+#wrapper a {
+  color: #000;
+  text-decoration: none;
+}
+
+#wrapper button {
+  font-size: 14px;
+}

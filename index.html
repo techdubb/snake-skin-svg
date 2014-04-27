@@ -1,24 +1,22 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <style>
-      body {
-        margin: 0px;
-        padding: 0px;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
     <script src="./js/svg.js"></script>
     <script src="./js/canvg/rgbcolor.js"></script>
     <script src="./js/canvg/StackBlur.js"></script>
     <script src="./js/canvg/canvg.js"></script>
   </head>
   <body>
+    <div id="wrapper">
+      <h1>Snake Skin SVG</h1>
+      <p>Inspired by <a href="https://github.com/aherbez" target="_new">@aherbez</a>'s <a href="https://github.com/aherbez/py-snakeskin" target="_new">py-snakeskin</a>.</p>
+      <div id="container"></div>
+      <button id="save-button">save as PNG in new tab</button>
+    </div>
+
     <!-- #canvas is to store the generated SVG information -->
     <canvas id="canvas" style="display:none;"></canvas>
-
-    <div id="container"></div>
-    <button id="save-button">save as PNG in new tab</button>
-
     <script defer="defer">
 
       var HEIGHT = 512,
