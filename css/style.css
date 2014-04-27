@@ -7,19 +7,22 @@ body {
 #wrapper {
   padding: 25px 0 0 0;
   margin: 0 auto;
-  width: 300px;
+  width: 400px;
   text-align: center;
   font-family: Georgia,Serif;;
   font-size: 16px;
 }
 
 #wrapper h1 {
+  margin-top: 0;
   font-size: 24px;
 }
 
 #wrapper a {
   color: #000;
   text-decoration: none;
+  border-bottom: 1px dotted black;
+  display: block-inline;
 }
 
 #wrapper button {
